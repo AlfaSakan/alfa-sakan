@@ -6,7 +6,7 @@ import Twitter from "./icons/Twitter";
 
 const SocialMedia = () => {
   return (
-    <div className="fixed bottom-0 left-12 flex-col items-center gap-5">
+    <div className="bottom-0 flex-col items-center hidden gap-5 md:fixed left-12">
       <a href="https://github.com/AlfaSakan" target="_blank" rel="noreferrer">
         <Github />
       </a>
@@ -27,7 +27,7 @@ const SocialMedia = () => {
       >
         <Instagram />
       </a>
-      <div className="border border-white h-20 w-0" />
+      <div className="w-0 h-20 border border-white" />
     </div>
   );
 };

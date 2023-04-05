@@ -11,7 +11,7 @@ const Instagram = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      class="hover:stroke-aquamarine transition-all duration-300"
+      className="transition-all duration-300 hover:stroke-aquamarine"
       width={20}
       height={20}
     >

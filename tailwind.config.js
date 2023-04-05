@@ -42,6 +42,20 @@ module.exports = {
           "sans-serif",
         ],
       },
+      keyframes: {
+        show: {
+          "0%": { opacity: 0, transform: "rotateY(90deg)" },
+          "100%": { opacity: 1, transform: "rotateY(0)" },
+        },
+        hide: {
+          "0%": { opacity: 1, transform: "rotateY(0)" },
+          "100%": { opacity: 0, transform: "rotateY(90deg)" },
+        },
+      },
+      animation: {
+        showContent: "show 1s ease-in-out forwards",
+        hideContent: "hide 1s ease-in-out forwards",
+      },
     },
   },
   plugins: [],

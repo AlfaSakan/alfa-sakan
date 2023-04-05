@@ -35,13 +35,13 @@ const About = () => {
 
   return (
     <div
-      className={`pt-60 flex-col pl-12 opacity-0 transition-all duration-1000 translate-y-72 ${
+      className={`pt-60 flex-col px-6 md:pl-12 opacity-0 transition-all duration-1000 translate-y-72 ${
         isVisible ? "opacity-100 translate-y-0" : ""
       }`}
       ref={aboutRef}
     >
       <ContentTitle text="About Me" number="01." />
-      <div className="about-content-container flex-1 gap-8 justify-start">
+      <div className="flex-col justify-start flex-1 gap-8 md:flex-row about-content-container">
         <div className="flex-col max-w-lg gap-4">
           <p>
             Hello! My name is Brittany and I enjoy creating things that live on
@@ -62,11 +62,11 @@ const About = () => {
             build a web app with the Spotify API using Node & React.
           </p>
           <p>Here are a few technologies I’ve been working with recently:</p>
-          <ul className="grid px-3 gap-3 grid-cols-2">
+          <ul className="grid grid-cols-2 gap-3 px-3">
             {skills.map((skill, index) => {
               return (
                 <li
-                  className="tex-slate text-xs font-mono"
+                  className="font-mono text-xs tex-slate"
                   key={`${index} ${skill}`}
                 >
                   {skill}
@@ -77,7 +77,7 @@ const About = () => {
         </div>
         <div className="relative z-10">
           <img
-            className="w-72 h-72 rounded peer"
+            className="rounded w-72 h-72 peer"
             alt="profile"
             src="https://upload.wikimedia.org/wikipedia/id/thumb/c/cf/Vagabond21.jpg/640px-Vagabond21.jpg"
           />
