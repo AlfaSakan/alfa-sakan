@@ -115,7 +115,7 @@ function Header({ onClickLogo }) {
       <ContainerGradient className="top-0 left-0 w-24 h-24 pt-2 pl-2 md:w-56 md:h-56 md:pt-5 md:pl-5 lg:w-72 lg:h-72" />
       <header className="z-10 flex items-center justify-between w-full px-5 py-4 md:px-11 md:py-9">
         <button onClick={onClickLogo}>
-          <h1 className="text-5xl font-bold">A</h1>
+          <h1 className="text-6xl font-bold lg:text-8xl md:text-7xl">A</h1>
         </button>
         <div className="items-center gap-8">
           <a
