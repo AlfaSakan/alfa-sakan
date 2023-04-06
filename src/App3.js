@@ -1,7 +1,12 @@
 import React, { useCallback, useState } from "react";
+import Github from "./components/icons/Github";
+import Gmail from "./components/icons/Gmail";
 
-// const gradientStyle = "from-red-600 to-blue-600 bg-gradient-to-tr";
-const gradientTopStyle = "from-red-600 to-blue-600 bg-gradient-to-t";
+const gradientStyle = "from-red-600 to-blue-600 bg-gradient-to-tr";
+const gradientTopStyle =
+  "from-red-600 to-red-600 bg-gradient-to-t via-blue-600 transition-all bg-size-200 duration-500 hover:bg-pos-100 bg-pos-0";
+const gradientRightStyle =
+  "from-red-600 to-red-600 via-blue-600 bg-gradient-to-r transition-all bg-size-200 duration-500 hover:bg-pos-100 bg-pos-0";
 
 const detailProjects = [
   {
@@ -35,9 +40,9 @@ function Intro({ isShow, isHide }) {
         isShow ? "animate-showContent" : ""
       } ${isHide ? "animate-hideContent" : ""}`}
     >
-      <h1 className="text-5xl font-thin">Welcome</h1>
+      <h1 className="text-5xl font-thin md:text-8xl">Welcome</h1>
       <div className={`pl-1 ${gradientTopStyle}`}>
-        <div className={`flex-col pl-4 bg-slate-900`}>
+        <div className={`flex-col pl-4 bg-slate-900 md:pl-6`}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacinia
             enim in dui porta consequat. Maecenas sed mollis nisl. Nullam
@@ -59,11 +64,11 @@ function DetailProject({ data, isShow, isHide }) {
       } ${isHide ? "animate-hideContent" : ""}`}
     >
       <h1 className="text-xl">{data.title}</h1>
-      {/* <div className={`pl-1 ${gradientStyle}`}> */}
-      <div className="flex-col pl-8 bg-slate-900">
-        <p>{data.description}</p>
+      <div className={`pl-1 ${gradientTopStyle}`}>
+        <div className="flex-col pl-4 bg-slate-900">
+          <p>{data.description}</p>
+        </div>
       </div>
-      {/* </div> */}
     </div>
   );
 }
@@ -78,7 +83,7 @@ function Projects({ onClick }) {
           {projects.map((project, index) => (
             <div
               key={project}
-              className="pb-[2px] bg-gradient-to-tr from-red-500 to-blue-500 w-fit"
+              className={`pb-[2px] w-fit ${gradientRightStyle}`}
             >
               <button
                 className="w-fit bg-slate-900"
@@ -97,7 +102,7 @@ function Projects({ onClick }) {
 function ContainerGradient({ className }) {
   return (
     <div
-      className={`absolute items-end justify-end rounded-tl-lg from-red-600 to-blue-600 bg-gradient-to-tr ${className}`}
+      className={`absolute items-end justify-end rounded-tl-lg ${gradientStyle} ${className}`}
     >
       <div className="w-full h-full rounded-tl bg-slate-900" />
     </div>
@@ -106,18 +111,40 @@ function ContainerGradient({ className }) {
 
 function Header({ onClickLogo }) {
   return (
-    <div className="relative mb-6">
-      <ContainerGradient className="top-0 left-0 w-24 h-24 pt-2 pl-2" />
-      <header className="z-10 flex items-center justify-between w-full px-5 py-4">
+    <div className="relative mb-6 md:mb-0">
+      <ContainerGradient className="top-0 left-0 w-24 h-24 pt-2 pl-2 md:w-56 md:h-56 md:pt-5 md:pl-5 lg:w-72 lg:h-72" />
+      <header className="z-10 flex items-center justify-between w-full px-5 py-4 md:px-11 md:py-9">
         <button onClick={onClickLogo}>
           <h1 className="text-5xl font-bold">A</h1>
         </button>
-        <div>
-          <p>App3</p>
-          <p>App3</p>
+        <div className="items-center gap-8">
+          <a
+            aria-label="email"
+            target="_blank"
+            href="mailto:alfasakan11@gmail.com?subject=Email from alfasakan.site"
+            rel="noreferrer"
+          >
+            <Gmail />
+          </a>
+          <a
+            aria-label="github"
+            target="_blank"
+            href="https://github.com/alfasakan"
+            rel="noreferrer"
+          >
+            <Github />
+          </a>
         </div>
       </header>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="flex items-center justify-center pb-3 mt-12 md:justify-end md:pr-6 md:pb-6">
+      <p>©{new Date().getFullYear()} alfasakan.site</p>
+    </footer>
   );
 }
 
@@ -142,10 +169,10 @@ function App3() {
   );
 
   return (
-    <div className="flex-col w-screen min-h-screen font-sans text-white bg-slate-900">
+    <div className="flex-col w-screen min-h-screen overflow-y-scroll font-sans text-white bg-slate-900 lg:px-28 lg:py-6">
       <Header onClickLogo={() => handleSelectContent(-1)} />
-      <main className="flex flex-col flex-1 px-5 gap-18">
-        <div className="relative flex-1">
+      <main className="flex flex-col flex-1 px-5 gap-18 md:px-11 lg:flex-row lg:items-center lg:justify-center">
+        <div className="relative flex-1 lg:flex-[2] lg:ml-12">
           <Intro isShow={selected === -1} isHide={previousContent === -1} />
           {detailProjects.map((d, index) => (
             <DetailProject
@@ -160,9 +187,7 @@ function App3() {
           <Projects onClick={handleSelectContent} />
         </div>
       </main>
-      <footer className="flex items-center justify-center pb-3 mt-12">
-        <p>©{new Date().getFullYear()} alfasakan.site</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
